@@ -16,9 +16,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProfileCubit()
-        ..getUser()
-        ..getDate(),
+      create: (context) => ProfileCubit()..getUser()..getDate(),
       child: BlocConsumer<ProfileCubit, ProfileState>(
         listener: (context, state) {
           if (state is SendReportSuccessState) {

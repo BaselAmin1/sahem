@@ -4,6 +4,8 @@ import 'package:sahem_app/features/auth/business_logic/auth_cubit.dart';
 import 'package:sahem_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:sahem_app/features/layout/presentation/screens/app_layout.dart';
 import 'package:sahem_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:sahem_app/features/layout/presentation/screens/profile_screen.dart';
+import 'package:sahem_app/features/layout/presentation/screens/profile_screen.dart';
 import 'package:sahem_app/features/layout/presentation/screens/welcome_screen.dart';
 import 'package:sahem_app/features/profile/business_logic/cubit/profile_cubit.dart';
 import 'package:sahem_app/features/profile/presentation/screens/camera_screen.dart';
@@ -67,6 +69,17 @@ class AppRouter {
             child: RegisterScreen() ,
           )
          
+        );
+
+         
+
+        
+        case profileScreen:
+        return MaterialPageRoute(
+          builder: (_) =>  BlocProvider(
+            create: (context) => ProfileCubit(),
+            child: ProfileScreen(),
+          ),
         );
     }
     return null;

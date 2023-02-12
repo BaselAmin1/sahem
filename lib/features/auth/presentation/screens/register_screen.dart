@@ -40,6 +40,7 @@ class RegisterScreen extends StatelessWidget {
         child: Form(
           key: registerKey,
           child: Container(
+            height: 950.h,
               width: double.infinity,
               decoration: const BoxDecoration(
                 image: DecorationImage(

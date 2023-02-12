@@ -36,6 +36,7 @@ class LoginScreen extends StatelessWidget {
         body: Form(
           key: loginKey,
           child: Container(
+            height: 950.h,
               width: double.infinity,
               decoration: const BoxDecoration(
                 image: DecorationImage(

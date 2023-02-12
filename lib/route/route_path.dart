@@ -6,3 +6,4 @@ const reportScreen = '/report_screen';
 const appLayoutScreen = '/app_layout';
 const cameraScreen = '/camera_screen';
 const registerScreen = '/register_screen';
+const profileScreen = '/profile_screen';
