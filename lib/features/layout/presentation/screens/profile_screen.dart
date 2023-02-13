@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sahem_app/features/auth/presentation/widgets/default_button.dart';
+import 'package:sahem_app/features/layout/presentation/widgets/card_profile.dart';
 import 'package:sahem_app/features/profile/business_logic/cubit/profile_cubit.dart';
 import 'package:sahem_app/helper/constants/strings.dart';
 
@@ -12,23 +14,7 @@ class ProfileScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProfileCubit(),
       child: BlocConsumer<ProfileCubit, ProfileState>(
-        listener: (context, state) {
-          if (state is SendReportSuccessState) {
-            kPlacemarks = null;
-            kPickedImage = null;
-            kC1 = null;
-            kB1 = 0;
-            kB2 = 0;
-            print(kPlacemarks);
-            print(kPickedImage);
-
-            print(kC1);
-
-            print(kB1);
-
-            print(kB2);
-          }
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           var cubit = ProfileCubit.get(context);
           if (kUser.result == null && kFormattedDate == null) {
@@ -44,64 +30,93 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       fit: BoxFit.fill),
                 ),
-                child: Column(children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 50.h),
-                    child: Center(
-                        child: Image.asset(
-                      'assets/images/Group.png',
-                    )),
-                  ),
-                  SizedBox(
-                    height: 30.h,
-                  ),
-                  Text(
-                    'المعلومات الشخصية',
-                    style: TextStyle(color: Colors.white, fontSize: 32.sp),
-                  ),
-                  SizedBox(
-                    height: 30.h,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 350.w),
-                    child: Text(
-                      ' الاسم ',
-                      style: TextStyle(color: Colors.white, fontSize: 22.sp),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: Column(children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 70.h),
+                      child: Center(
+                          child: Image.asset(
+                        'assets/images/Group.png',
+                      )),
                     ),
-                  ),
-                  Text(
-                                    kUser.result == null
-                                        ? ''
-                                        :   kUser.result!.name!,
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                      fontSize: 22.sp,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                  SizedBox(
-                    height: 250.h,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 350.w),
-                    child: Text(
-                      ' الهاتف',
-                      style: TextStyle(color: Colors.white, fontSize: 22.sp),
+                    SizedBox(
+                      height: 30.h,
                     ),
-                  ),
-                 Text(
-                                    kUser.result == null
-                                        ? ''
-                                        :  kUser.result!.phone!,
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                      fontSize: 22.sp,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                ]),
+                    Text(
+                      'المعلومات الشخصية',
+                      style: TextStyle(color: Colors.white, fontSize: 32.sp),
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(left: 150.0.w, right: 150.0.w),
+                        child: Divider(
+                          color: Colors.green,
+                          height: 25.h,
+                          thickness: 1.sp,
+                        )),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 280.w),
+                            child: Text(
+                              'الاسم',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 22.sp),
+                            ),
+                          ),
+                          CardFb2(
+                            text:
+                                kUser.result == null ? '' : kUser.result!.name!,
+                            onPressed: () {},
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 270.w),
+                            child: Text(
+                              ' الهاتف',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 22.sp),
+                            ),
+                          ),
+                          CardFb2(
+                            text: kUser.result == null
+                                ? ''
+                                : kUser.result!.phone!,
+                            onPressed: () {},
+                          ),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 180.w),
+                            child: Text(
+                              ' البريد الألكتروني',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 22.sp),
+                            ),
+                          ),
+                          CardFb2(
+                            text: 'Ahmed-Kamal@gmail.com',
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50.h,
+                    ),
+                    DefaultButton(
+                      onPressed: () {},
+                      childText: 'حفظ المتغيرات',
+                      color: Colors.white,
+                      textColor: Color(0xFF2BB9D8),
+                    ),
+                  ]),
+                ),
               ),
             );
           }
